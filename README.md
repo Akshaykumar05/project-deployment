@@ -23,6 +23,18 @@ version --ansible
 
 <img width="782" alt="ansible-version" src="https://github.com/user-attachments/assets/5e35e9b4-eb00-424e-833e-a90789f2344f" />
 
+## Configure Ansible Inventory (hosts file)
+Edit the Ansible inventory file (/etc/ansible/hosts) and add remote hosts you want to manage.
+```
+sudo vim /etc/ansible/hosts
+```
+<img width="774" alt="ansible-hosts-file" src="https://github.com/user-attachments/assets/d64b0a1f-813a-451b-a6b4-197604fcfd09" />
+
+Now restart the ansible
+```
+sudo systemctl restart ansible
+```
+
 ## Task: Set Up SSH Key-Based Authentication
 This task allows Ansible to connect securely to remote machines.
 
@@ -58,4 +70,35 @@ If everything is configured correctly, you should see:
 <img width="758" alt="ping-pong" src="https://github.com/user-attachments/assets/e90589f4-fa27-47ab-a272-e70400c8aaa7" />
 
 Now your Ansible control node can communicate with the remote VM! 
+
+Example 2: Run a Simple Command
+These commands remotely execute system commands on all managed nodes using Ansible.
+
+1. Check System Uptime
+```
+ansible all -m command -a "uptime"
+```
+* Runs the uptime command on all remote machines.
+* Displays how long the system has been running, number of users, and system load.
+
+2. Check Disk Usage with File System Type
+```
+ansible all -m command -a "df -Th"
+```
+* Runs df -Th to display disk usage with file system types.
+* The -T flag shows the file system type.
+* The -h flag makes the output human-readable.
+
+3. Get Hostname of Remote Machines
+```
+ansible all -m command -a "hostname"
+```
+* Runs hostname to get the hostname of each remote machine.
+
+<img width="770" alt="ansible-commands" src="https://github.com/user-attachments/assets/b8a653e5-d32b-4afd-a98f-b057be1619fb" />
+
+
+
+
+
 
