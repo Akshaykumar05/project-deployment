@@ -32,7 +32,7 @@ Run this command on the VM where Ansible is installed:
 ssh-keygen -t rsa -b 4096
 ```
 Step 2: Copy the SSH Key to the Target (Managed) Node
-Now, transfer the SSH key to the remote VM (the target machine Ansible will manage). Replace 192.168.1.100 with your remote VM’s actual IP:
+Now, transfer the SSH key to the remote VM (the target machine Ansible will manage). Replace 192.168.84.131 with your remote VM’s actual IP:
 ```
 ssh-copy-id akshay@192.168.84.131
 ```
