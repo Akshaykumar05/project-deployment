@@ -8,6 +8,7 @@ This is the project to practice DevOps process, where we will do hands-on of dep
 1. Jenkins
 2. Ansible
 3. Nexus
+4. Tomcat
 
 ------------------
 Lets install Ansible on first VM (master) and check the version with the following commands:
@@ -97,6 +98,33 @@ ansible all -m command -a "hostname"
 
 <img width="770" alt="ansible-commands" src="https://github.com/user-attachments/assets/b8a653e5-d32b-4afd-a98f-b057be1619fb" />
 
+------------------
+Next, we will configure Jenkins on our base. The steps are following:
+
+![Install-Jenkins-on-Ubuntu-20 04--2-](https://github.com/user-attachments/assets/79eb17ed-eea5-4e17-814a-b4e46e878b70)
+
+### Java Installation
+Jenkins is a Java application, hence the system must have Java 8 or later installed. The open-source Java Platform implementation, OpenJDK 11, will be installed.
+To install OpenJDK 11, issue the following commands as root, a user with sudo permissions, or both:
+```
+sudo apt update
+```
+```
+sudo apt install openjdk-11-jdk
+```
+Verify that the installation was successful by looking at the Java version:
+```
+java -version
+```
+### Installing Jenkins
+add the Jenkins GPG key to your Ubuntu system before installing Jenkins.
+```
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+```
+The Jenkins repository should then be added to the system using:
+```
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]  https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+```
 
 
 
