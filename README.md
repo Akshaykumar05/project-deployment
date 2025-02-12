@@ -125,8 +125,37 @@ The Jenkins repository should then be added to the system using:
 ```
 echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]  https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
 ```
+To update the apt package list and install the most recent version of Jenkins after the Jenkins repository has been activated.
+```
+sudo apt update
+```
+```
+sudo apt install -y jenkins
+```
+```
+systenctl status jenkins
+```
+<img width="917" alt="jenkins-status" src="https://github.com/user-attachments/assets/d0966adc-d93b-4e5d-a8c1-1617a917e1a2" />
+
+
+### Setting up Jenkins
+Open your browser and type your domain or IP address followed by port 8080, http://your_ip_or_domain:8080 to configure your new Jenkins installation.
+
+You will be prompted to enter the Administrator password that is created during the installation on a page that looks something like the following:
 
 
 
+Now, use the cat command to display the password on the terminal:
+```
+cat /var/lib/jenkins/secrets/initialAdminPassword
+```
+You should see a 32-character long alphanumeric password, as shown below:
+"""06cbf25d811a424bb236c76fd6e04c47"""
+
+Click “Continue” after copying the administrator password from the terminal and paste it there.
+
+The setup procedure will ask you if you want to install suggested plugins or only certain plugins on the following screen.
+
+<img width="797" alt="jenkins-custom" src="https://github.com/user-attachments/assets/f00394b5-6409-44e2-be5d-5f7344e10725" />
 
 
