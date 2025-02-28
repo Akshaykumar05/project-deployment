@@ -171,4 +171,55 @@ We need to install and setup Tomcat on the different server.
   ```
   <img width="704" alt="image" src="https://github.com/user-attachments/assets/7fb0f1a4-c39c-43ed-ab9e-06b5fae2674e" />
 
+These scripts are used to start, stop and, otherwise manage the Tomcat instance.
 
+### Creating SystemD Unit File
+Instead of using the shell scripts to start and stop the Tomcat server, we’ll set it to run as a service.
+Open the text editor and create a ```tomcat.service``` unit file in the ```/etc/systemd/system/``` directory:
+```
+sudo vim /etc/systemd/system/tomcat.service
+```
+Paste the following configuration:
+```
+[Unit]
+Description=Tomcat 9 servlet container
+After=network.target
+
+[Service]
+Type=forking
+
+User=tomcat
+Group=tomcat
+
+Environment="JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64"
+Environment="JAVA_OPTS=-Djava.security.egd=file:///dev/urandom -Djava.awt.headless=true"
+
+Environment="CATALINA_BASE=/opt/tomcat"
+Environment="CATALINA_HOME=/opt/tomcat"
+Environment="CATALINA_PID=/opt/tomcat/temp/tomcat.pid"
+Environment="CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC"
+
+ExecStart=/opt/tomcat/bin/startup.sh
+ExecStop=/opt/tomcat/bin/shutdown.sh
+
+Restart=always
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
+```
+Save and close the file and notify systemd that a new unit file exists:
+```
+sudo systemctl daemon-reload
+```
+Enable and start the Tomcat service:
+```
+sudo systemctl enable --now tomcat
+```
+Check the service status:
+```
+sudo systemctl status tomcat
+```
+The output should show that the Tomcat server is enabled and running:
+
+<img width="797" alt="image" src="https://github.com/user-attachments/assets/3fab1163-3429-42e2-a91a-a963bd6c478f" />
