@@ -223,3 +223,8 @@ sudo systemctl status tomcat
 The output should show that the Tomcat server is enabled and running:
 
 <img width="797" alt="image" src="https://github.com/user-attachments/assets/3fab1163-3429-42e2-a91a-a963bd6c478f" />
+
+Check the tomcat status on using URL with VM IP along with port.
+```192.168.84.131:8080```
+<img width="638" alt="image" src="https://github.com/user-attachments/assets/10757748-27eb-43ab-810f-ef61fef24c3a" />
+
