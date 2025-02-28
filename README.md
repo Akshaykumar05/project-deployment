@@ -158,4 +158,17 @@ The setup procedure will ask you if you want to install suggested plugins or onl
 
 <img width="797" alt="jenkins-custom" src="https://github.com/user-attachments/assets/f00394b5-6409-44e2-be5d-5f7344e10725" />
 
+-----------------
+## Tomcat installation on Other Server (VM-2)
+We need to install and setup Tomcat on the different server.
+.
+.
+.
+.
+* Start the tomcat
+  ```
+  sudo /opt/tomcat/bin/startup.sh
+  ```
+  <img width="704" alt="image" src="https://github.com/user-attachments/assets/7fb0f1a4-c39c-43ed-ab9e-06b5fae2674e" />
+
 
